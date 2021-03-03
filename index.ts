@@ -28,20 +28,24 @@ async function getSchedule(user: string) {
     ],
     { headers: { "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko" } }
   );
-  for (const s of response.data[0].data.user.channel.schedule.segments) {
-    if (!schedule[s.startAt.substr(0, 10)]) {
-      schedule[s.startAt.substr(0, 10)] = [];
+  console.log(response.data[0].data.user.channel.schedule);
+  if (response.data[0].data.user.channel && response.data[0].data.user.channel.schedule ) {
+    for (const s of response.data[0].data.user.channel.schedule.segments) {
+      if (!schedule[s.startAt.substr(0, 10)]) {
+        schedule[s.startAt.substr(0, 10)] = [];
+      }
+      schedule[s.startAt.substr(0, 10)].push({
+        who: user,
+        start: s.startAt,
+        end: s.endAt,
+        title: s.title,
+
+      });
     }
-    schedule[s.startAt.substr(0, 10)].push({
-      who: user,
-      start: s.startAt,
-      end: s.endAt,
-      title: s.title,
-    });
   }
 }
 
-const users = ["sociablesteve", "whitep4nth3r", "dr_dinomight"];
+const users = ["sociablesteve", "whitep4nth3r", "dr_dinomight", "lucecarter", "BaldBeardedBuilder", "toefrog", "rawwwrs", "thatn00b__", "sadmoody", "Matty_TwoShoes", "BrattDamon"];
 
 Promise.all(users.map((u) => getSchedule(u))).then(() => {
   console.log(schedule)
