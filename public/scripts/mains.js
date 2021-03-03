@@ -34,14 +34,13 @@ window.onload = () => {
 
 
         if (streamers) {
-            console.log(streamers);
+            streamers.sort((a,b) => moment(a.start) - moment(b.start) )
             for (let index = 0; index < streamers.length; index++) {
-                console.log(index);
                 var element = streamers[index];
                 var streamer =  document.createElement('a');
                 streamer.href = `https://twitch.tv/${element.who}`;
                 streamer.classList = 'streamer';
-                streamer.innerHTML = `${element.who} @ ${moment(element.start).format('LT')}`;
+                streamer.innerHTML = `${element.who} @ ${moment(element.start).format('LT')} - <span>${element.title}</span>`;
                 cell.appendChild(streamer);
 
             }
