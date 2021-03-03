@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,500;1,500&display=swap');
+        :root {
+            --color-primary: #ffb626;
+            --color-secondary: #82af3a;
+            --color-tertiary: #f11012;
+            --color-foreground: #0f111a;
+            --color-background: #ffffff;
+            --color-muted: #666666;
+            --grid-unit: 0.5rem;
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-bold: 700;
+            --font-family-heading: "Work Sans",sans-serif;
+            --font-family-body: "Work Sans",sans-serif;
+            --global-transition-time: 0.2s;
+            --wrapper-max-width: 48rem;
+        }
+
+        body { margin: 0; }
+
+        .main {
+            font-family:  "Work Sans", sans-serif;
+        }
+
+        .main__title {
+            font-size: 45px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 50px 30px;
+            text-align: center;
+            color: var(--color-background);
+            text-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+            grid-column: span 2;
+            background: var(--color-foreground);
+            border-bottom: .5rem solid var(--color-tertiary);
+
+            margin-bottom: 20px;
+        }
+
+        .main__date::first-child {
+            border-top: .5rem solid var(--color-primary);
+        }
+
+
+        .main__date {
+            background: var(--color);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            border-bottom: .5rem solid var(--color-primary);
+        }
+        .dateDisplay {
+            display: flex;
+            justify-content: flex-end;
+            color: var(--color-foreground);
+            margin-bottom: 10px;
+        }
+
+        .day {
+            font-size: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+        }
+
+        .date {
+            padding-top: 5px;
+            font-size: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+            margin-right: 0.5rem;
+        }
+        .streamer {
+            border-radius: 0;
+            text-transform: uppercase;
+            font-family: var(--font-family-main);
+            font-size: 1.5rem;
+            display: inline-block;
+            background-color: var(--color-foreground);
+            padding: .5rem 1rem;
+            color: var(--color-background);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all .2s ease-in-out;
+            font-weight: var(--font-weight-normal);
+            border: .125rem solid var(--color-background);
+            box-shadow: .5rem .5rem 0 0 var(--color-primary);
+            margin-bottom: 2rem;
+        }
+
+        .streamer:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            box-shadow: none;
+        }

@@ -1,8 +1,10 @@
 import axios from "axios";
+import * as fs from 'fs';
 
 let schedule = {};
 
 async function getSchedule(user: string) {
+  const current = new Date();
   const response = await axios.post(
     "https://gql.twitch.tv/gql",
     [
@@ -12,8 +14,8 @@ async function getSchedule(user: string) {
           login: user,
           startingWeekday: "MONDAY",
           utcOffsetMinutes: 0,
-          startAt: "2021-03-01T00:00:00.000Z",
-          endAt: "2021-03-31T23:59:59.059Z",
+          startAt: current,
+          endAt: current.getDate()+30,
         },
         extensions: {
           persistedQuery: {
@@ -41,4 +43,13 @@ async function getSchedule(user: string) {
 
 const users = ["sociablesteve", "whitep4nth3r", "dr_dinomight"];
 
-Promise.all(users.map((u) => getSchedule(u))).then(() => console.log(schedule));
+Promise.all(users.map((u) => getSchedule(u))).then(() => {
+  console.log(schedule)
+  fs.writeFile('./public/scripts/output.js', 'var schedule = ' + JSON.stringify(schedule),  function(err) {
+      if (err) {
+          return console.error(err);
+      }
+      console.log("File created!");
+  });
+});
+
