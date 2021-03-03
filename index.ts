@@ -28,9 +28,12 @@ async function getSchedule(user: string) {
     ],
     { headers: { "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko" } }
   );
-  console.log(response.data[0].data.user.channel.schedule);
-  if (response.data[0].data.user.channel && response.data[0].data.user.channel.schedule ) {
-    for (const s of response.data[0].data.user.channel.schedule.segments) {
+
+
+  if (response.data[0].data.user && response.data[0].data.user.channel && response.data[0].data.user.channel.schedule && response.data[0].data.user.channel.schedule.segments ) {
+    var items = response.data[0].data.user.channel.schedule.segments;
+    items.sort((a,b) => { a.startAt - b.startAt});
+    for (const s of items) {
       if (!schedule[s.startAt.substr(0, 10)]) {
         schedule[s.startAt.substr(0, 10)] = [];
       }
@@ -39,16 +42,40 @@ async function getSchedule(user: string) {
         start: s.startAt,
         end: s.endAt,
         title: s.title,
-
       });
     }
   }
 }
 
-const users = ["sociablesteve", "whitep4nth3r", "dr_dinomight", "lucecarter", "BaldBeardedBuilder", "toefrog", "rawwwrs", "thatn00b__", "sadmoody", "Matty_TwoShoes", "BrattDamon"];
+
+const users = [
+  "brattdamon",
+  "cadillacjack1",
+  "canhorn",
+  "codejuration",
+  "lucecarter",
+  "contentfuldevs",
+  "cowboy_salmon",
+  "dr_dinomight",
+  "exegeteio",
+  "gacbl",
+  "jwalter",
+  "laylacodesit",
+  "matty_twoshoes",
+  "rawwwrs",
+  "ryantupo",
+  "ryan_the_rhg",
+  "sadmoody",
+  "sketchni",
+  "sociablesteve",
+  "thatn00b__",
+  "toefrog",
+  "greg_holmes",
+  "madhouseminers",
+
+];
 
 Promise.all(users.map((u) => getSchedule(u))).then(() => {
-  console.log(schedule)
   fs.writeFile('./public/scripts/output.js', 'var schedule = ' + JSON.stringify(schedule),  function(err) {
       if (err) {
           return console.error(err);
