@@ -72,7 +72,7 @@ const users = [
   "toefrog",
   "greg_holmes",
   "madhouseminers",
-
+  "whitep4nth3r",
 ];
 
 Promise.all(users.map((u) => getSchedule(u))).then(() => {
