@@ -38,9 +38,15 @@ window.onload = () => {
             for (let index = 0; index < streamers.length; index++) {
                 var element = streamers[index];
                 var streamer =  document.createElement('a');
+
+                var text = `${element.who} @ ${moment(element.start).format('LT')}`;
+
+                if (element.end) text =  text + `/${moment(element.end).format('LT')}`;
+                if (element.title) text =  text + ` - <span>${element.title}</span>`;
+
                 streamer.href = `https://twitch.tv/${element.who}`;
                 streamer.classList = 'streamer';
-                streamer.innerHTML = `${element.who} @ ${moment(element.start).format('LT')} - <span>${element.title}</span>`;
+                streamer.innerHTML = text;
                 cell.appendChild(streamer);
 
             }

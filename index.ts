@@ -29,7 +29,6 @@ async function getSchedule(user: string) {
     { headers: { "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko" } }
   );
 
-
   if (response.data[0].data.user && response.data[0].data.user.channel && response.data[0].data.user.channel.schedule && response.data[0].data.user.channel.schedule.segments ) {
     var items = response.data[0].data.user.channel.schedule.segments;
     items.sort((a,b) => { a.startAt - b.startAt});
@@ -49,10 +48,6 @@ async function getSchedule(user: string) {
 
 
 const users = [
-  {
-    name: "baldbeardedbuilder",
-    id: "279965339",
-  },
   {
     name: "brattdamon",
     id: "254737658",
@@ -88,10 +83,6 @@ const users = [
   {
     name: "gacbl",
     id: "120572949",
-  },
-  {
-    name: "jwalter",
-    id: "50911906",
   },
   {
     name: "laylacodesit",
@@ -140,6 +131,10 @@ const users = [
   {
     name: "aurorasmadhouse",
     id: "132113595",
+  },
+  {
+    name: "whitep4nth3r",
+    id: "000000000",
   },
 ];
 
