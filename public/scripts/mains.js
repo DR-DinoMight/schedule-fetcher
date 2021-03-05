@@ -8,11 +8,14 @@ window.onload = () => {
 
 
     var mainContent = document.querySelector('.main');
-
-    for(var i=0; i<5; i++){
+    var daysTillEndOfWeek = moment().endOf('week').diff(moment(),'days');
+    console.log(daysTillEndOfWeek);
+    for(var i=0; i<= daysTillEndOfWeek+1; i++){
 
         var day=new Date(year, month, date + i);
         var streamers = schedule[moment(day).format('yyyy-MM-DD')];
+        console.log(streamers, moment(day).subtract(7, "days"));
+        if (!streamers) streamers[moment(day).subtract(7, "days").format('yyyy-MM-DD')]
         var cell= document.createElement('div');
         cell.classList.add('main__date');
 
