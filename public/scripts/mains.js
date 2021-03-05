@@ -49,7 +49,15 @@ window.onload = () => {
 
                 streamer.href = `https://twitch.tv/${element.who}`;
                 streamer.classList = 'streamer';
-                streamer.innerHTML = text;
+
+                streamer.style.cssText = `--avatar: `;
+
+                if (moment().isBetween(moment(element.start).subtract(2, 'hours'), element.end)) {
+                    streamer.classList.add('live');
+                    text = '🔴 LIVE - ' +text;
+                }
+
+                streamer.innerHTML = `<img src='https://avatar.glue-bot.xyz/twitch/${element.who}' alt='Profile photo of ${element.who}' />` + text;
                 cell.appendChild(streamer);
 
             }
