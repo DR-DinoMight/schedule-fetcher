@@ -132,9 +132,19 @@
             overflow: hidden;
             margin: 0.2rem 0.2rem 0.2rem 0;
         }
+        .streamer.live img {
+            width: 50px;
+            filter: grayscale(50%) brightness(125%);
+
+            border: 5px solid  #79080a;
+        }
 
         .streamer:hover img {
             filter: grayscale(0%) brightness(100%);
             border: 5px solid var(--color-primary);
             transform: rotate(0deg);
+        }
+
+        .streamer.live:hover img {
+            border: 5px solid var(--color-tertiary);
         }
