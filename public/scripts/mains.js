@@ -52,7 +52,7 @@ window.onload = () => {
 
                 streamer.style.cssText = `--avatar: `;
 
-                if (moment().isBetween(moment(element.start).subtract(2, 'hours'), element.end)) {
+                if (moment().isBetween(moment(element.start), element.end)) {
                     streamer.classList.add('live');
                     text = '🔴 LIVE - ' +text;
                 }
