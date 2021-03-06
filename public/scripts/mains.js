@@ -41,23 +41,26 @@ window.onload = () => {
             for (let index = 0; index < streamers.length; index++) {
                 var element = streamers[index];
                 var streamer =  document.createElement('a');
-
-                var text = `${element.who} @ ${moment(element.start).format('LT')}`;
-
-                if (element.end) text =  text + `/${moment(element.end).format('LT')}`;
-                if (element.title) text =  text + ` - <span>${element.title}</span>`;
-
                 streamer.href = `https://twitch.tv/${element.who}`;
                 streamer.classList = 'streamer';
 
                 streamer.style.cssText = `--avatar: `;
 
-                if (moment().isBetween(moment(element.start), element.end)) {
+                var text = `
+                <span class="leftContainer">
+                    <img src='https://avatar.glue-bot.xyz/twitch/${element.who}' alt='Profile photo of ${element.who}' />`;
+
+                    if (moment().isBetween(moment(element.start), element.end)) {
                     streamer.classList.add('live');
-                    text = '🔴 LIVE - ' +text;
+                    text = text + `<span class="status" title="According to Schedule this user is live">🔴 LIVE </span>`;
                 }
 
-                streamer.innerHTML = `<img src='https://avatar.glue-bot.xyz/twitch/${element.who}' alt='Profile photo of ${element.who}' />` + text;
+                text = text + `<span class="user">${element.who}</span> <span class="title">${element.title}</span></span> <span class="time">${moment(element.start).format('LT')}`;
+
+                text =  text  +  ((element.end) ? `/${moment(element.end).format('LT')}</span>` : '</span>');
+
+
+                streamer.innerHTML = text;
                 cell.appendChild(streamer);
 
             }

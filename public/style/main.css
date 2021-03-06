@@ -75,7 +75,6 @@
             text-transform: uppercase;
             font-family: var(--font-family-main);
             font-size: 1.5rem;
-            display: flex;
             background-color: var(--color-foreground);
             padding: .5rem 1rem;
             color: var(--color-background);
@@ -86,10 +85,26 @@
             border: .125rem solid var(--color-background);
             box-shadow: .5rem .5rem 0 0 var(--color-primary);
             margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .streamer span {
+        .streamer .leftContainer {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .streamer .leftContainer span {
+            margin-left: 1rem;
+        }
+
+        .title {
+            justify-self: flex-end;
+            flex-grow: 2;
+        }
+
+        .streamer .title {
             font-size: 1rem;
         }
 
