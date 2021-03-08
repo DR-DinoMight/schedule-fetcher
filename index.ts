@@ -136,6 +136,10 @@ const users = [
     name: "whitep4nth3r",
     id: "000000000",
   },
+  {
+    name: "lukeocodes",
+    id: "000000000",
+  },
 ];
 
 Promise.all(users.map((u) => getSchedule(u.name))).then(() => {
