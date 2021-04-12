@@ -1,6 +1,8 @@
 import axios from "axios";
 import * as fs from 'fs';
 
+require('dotenv').config()
+
 let schedule = {};
 
 async function getSchedule(user: string) {
@@ -26,7 +28,7 @@ async function getSchedule(user: string) {
         },
       },
     ],
-    { headers: { "Client-ID": "kimne78kx3ncx6brgo4mv6wki5h1ko" } }
+    { headers: { "Client-ID": "zbkdzticggd5rdscnine5s64n0bv83" } }
   );
 
   if (response.data[0].data.user && response.data[0].data.user.channel && response.data[0].data.user.channel.schedule && response.data[0].data.user.channel.schedule.segments ) {
@@ -134,10 +136,6 @@ const users = [
   },
   {
     name: "whitep4nth3r",
-    id: "000000000",
-  },
-  {
-    name: "lukeocodes",
     id: "000000000",
   },
 ];
